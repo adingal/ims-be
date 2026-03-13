@@ -1,8 +1,22 @@
+const Loadboard = require('./../models/loadboardModel')
+
 exports.getAllLoadboard = async (req, res) => {
-  res.status(200).json({
-    message: 'success',
-    data: null,
-  })
+  try {
+    const loadboards = await Loadboard.find()
+
+    res.status(200).json({
+      message: 'success',
+      results: loadboards.length,
+      data: {
+        loadboards,
+      },
+    })
+  } catch (error) {
+    res.status(400).json({
+      message: 'fail',
+      error,
+    })
+  }
 }
 
 exports.getLoadboard = async (req, res) => {
