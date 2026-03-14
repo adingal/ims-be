@@ -5,6 +5,8 @@ const loadboardRouter = require('./routes/loadboardRoutes')
 
 const app = express()
 
+app.use(express.json())
+
 // Logger
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'))
